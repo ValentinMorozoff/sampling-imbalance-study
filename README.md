@@ -1,17 +1,63 @@
-# Sampling imbalance study
+# Исследование влияния дисбаланса выборки на качество моделей
 
-Study of the impact of sample imbalance on the quality of models using the example of a churn forecast
+## О проекте
 
-Description of the experiment
+Проект посвящен сравнению подходов к обучению моделей классификации на несбалансированных данных на примере задачи прогнозирования оттока клиентов банка.
 
-In the course of this study, it was required to evaluate the impact of the imbalance of the objective on the quality of the classification models.
+В центре исследования:
 
-As metrics-assessments of the quality of the models, F1 was used - the harmonic mean between the recall and accuracy, and AUC-ROC - the area under the curve of the relationship between the recall of the model and the proportion of false positives.
+- влияние дисбаланса классов на качество модели;
+- сравнение логистической регрессии, решающего дерева и случайного леса;
+- оценка методов балансировки выборки, включая взвешивание классов, upsampling, downsampling и SMOTE.
 
-Observations related to the outflow of customers from the bank were analyzed.
+## Что внутри репозитория
 
-Three models took part in the experiment: logistic regression, decision tree and random forest. Each model was evaluated with default and fitted hyperparameters, with class-weighted samples, upscaling and downsampling with balanced samples.
+- `sampling_imbalance_study.ipynb` — базовое исследование влияния дисбаланса выборки;
+- `sampling_imbalance_study_smote.ipynb` — вариант исследования с отдельным сравнением через SMOTE;
+- `data/churn.csv` — исходные данные для анализа;
+- `README.md` — краткое описание проекта и структуры;
+- `CONTRIBUTING.md` — правила поддержания репозитория в аккуратном portfolio-формате.
 
-The author experimentally proved that linear models are most sensitive to sample imbalance, and models based on decision trees are practically robust to imbalances.
+## Стек
 
-At the same time, for linear models, the metrics remained at the reference values ​​regardless of the type of balancing, while tree-based models showed the best result when weighting classes.
+- Python
+- Jupyter Notebook
+- pandas
+- NumPy
+- scikit-learn
+- imbalanced-learn
+- matplotlib
+- seaborn
+
+## Данные
+
+Исходный датасет лежит в репозитории:
+
+- `data/churn.csv`
+
+Ноутбуки настроены так, чтобы в первую очередь использовать локальную копию данных из папки `data/`.
+
+## Ключевой результат
+
+Исследование показывает, что дисбаланс классов влияет на поведение моделей по-разному:
+
+- линейные модели сильнее чувствительны к дисбалансу;
+- tree-based модели оказываются устойчивее;
+- техники балансировки влияют на итоговые метрики и должны подбираться осознанно, а не механически.
+
+## Как открыть проект
+
+1. Открой репозиторий локально.
+2. Запусти Jupyter Notebook или JupyterLab.
+3. Открой один из ноутбуков:
+   - `sampling_imbalance_study.ipynb`
+   - `sampling_imbalance_study_smote.ipynb`
+4. Убедись, что файл `data/churn.csv` находится на месте.
+
+## Формат проекта
+
+Этот репозиторий оформлен как portfolio-case:
+
+- код и технические конструкции — на английском;
+- аналитические пояснения и выводы — на русском;
+- структура ориентирована на читаемость и воспроизводимость.
